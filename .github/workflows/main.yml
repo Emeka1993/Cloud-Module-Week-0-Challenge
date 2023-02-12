@@ -1,11 +1,21 @@
-name: Install Fly CLI
-  run: curl https://fly.io/install.sh | sh
-
-
-
 name: Deploy to Fly
-  run: |
-    fly deploy -t ${{ secrets.FLY_TARGET }} -p .
-    
+
+on:
+  push:
+    branches:
+      - main
+
 env:
   FLY_TARGET: ${{ secrets.FLY_TARGET }}
+
+jobs:
+  install_fly_cli:
+    name: Install Fly CLI
+    run: curl https://fly.io/install.sh | sh
+
+  deploy_to_fly:
+    name: Deploy to Fly
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy to Fly
+      run: fly deploy -t ${{ env.FLY_TARGET }} -p .

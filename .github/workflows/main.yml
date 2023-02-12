@@ -1,0 +1,2 @@
+- name: Install Fly CLI
+  run: curl https://fly.io/install.sh | sh

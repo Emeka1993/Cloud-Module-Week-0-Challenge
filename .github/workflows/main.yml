@@ -1,9 +1,9 @@
-- name: Install Fly CLI
+name: Install Fly CLI
   run: curl https://fly.io/install.sh | sh
 
 
 
-- name: Deploy to Fly
+name: Deploy to Fly
   run: |
     fly deploy -t $FLY_TARGET -p .
     

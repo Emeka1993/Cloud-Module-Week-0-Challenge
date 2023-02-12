@@ -5,13 +5,16 @@ on:
     branches:
       - main
 
-env:
-  FLY_TARGET: ${{ secrets.FLY_TARGET }}
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
 
-steps:
-  - name: Install Fly CLI
-    run: curl https://fly.io/install.sh | sh
+    steps:
+    - name: Install Fly CLI
+      run: curl https://fly.io/install.sh | sh
 
-  - name: Deploy to Fly
-    run: fly deploy -t ${{ env.FLY_TARGET }} -p .
-
+    - name: Deploy to Fly
+      run: |
+        fly deploy -t ${{ secrets.FLY_TARGET }} -p .
+      env:
+        FLY_TARGET: ${{ secrets.FLY_TARGET }}

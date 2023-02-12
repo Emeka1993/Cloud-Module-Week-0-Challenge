@@ -5,10 +5,7 @@ name: Install Fly CLI
 
 name: Deploy to Fly
   run: |
-    fly deploy -t $FLY_TARGET -p .
+    fly deploy -t ${{ secrets.FLY_TARGET }} -p .
     
-    
-    
-    env:
-  FLY_TARGET: Cloud-Module-Week-0-Challenge
-
+env:
+  FLY_TARGET: ${{ secrets.FLY_TARGET }}

@@ -6,3 +6,9 @@
 - name: Deploy to Fly
   run: |
     fly deploy -t $FLY_TARGET -p .
+    
+    
+    
+    env:
+  FLY_TARGET: Cloud-Module-Week-0-Challenge
+

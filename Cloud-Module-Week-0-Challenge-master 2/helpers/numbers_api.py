@@ -3,6 +3,7 @@ import requests
 NUMBERS_API_ENDPOINT = "http://numbersapi.com"
 
 
+
 def get_fact_for_number(number):
     try:
         res = requests.get(f"{NUMBERS_API_ENDPOINT}/{number}")
